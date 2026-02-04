@@ -52,7 +52,7 @@ questionsRouter.get("/search", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Unable to fetch questions." }); // Using generic error based on spec, though spec says "Unable to fetch a question" for search? Spec says "Unable to fetch a question." for search error 500.
+        return res.status(500).json({ message: "Unable to fetch questions." });
     }
 });
 
@@ -81,7 +81,7 @@ questionsRouter.get("/:id", async (req, res) => {
         return res.status(200).json({ data: result.rows[0] });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ message: "Unable to fetch questions." }); // Spec says "Unable to fetch questions." for ID too? "Unable to fetch questions." in GET /questions/:questionId
+        return res.status(500).json({ message: "Unable to fetch questions." });
     }
 });
 
@@ -107,7 +107,7 @@ questionsRouter.put("/:id", async (req, res) => {
         return res.status(200).json({ message: "Question updated successfully." });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Unable to fetch questions." }); // Spec error message copy-paste likely? "Unable to fetch questions."
+        return res.status(500).json({ message: "Unable to fetch questions." });
     }
 });
 
@@ -133,22 +133,16 @@ questionsRouter.delete("/:id", async (req, res) => {
     }
 });
 
-// --- Answers Endpoints under Questions ---
-
 // Create an answer for a question
 questionsRouter.post("/:id/answers", async (req, res) => {
     const questionId = req.params.id;
     const { content } = req.body;
 
-    if (!content || content.length > 300) { // Spec says max 300 chars
+    if (!content || content.length > 300) {
         return res.status(400).json({ message: "Invalid request data." });
     }
 
     try {
-        // Check if question exists first? Constraints handles FK but 404 is nice.
-        // However, FK error usually throws 500 or constraint error.
-        // Let's rely on constraint for now or simple check.
-        // Spec shows 404 Not Found for POST answer.
         const questionCheck = await connectionPool.query("SELECT * FROM questions WHERE id = $1", [questionId]);
         if (questionCheck.rowCount === 0) {
             return res.status(404).json({ message: "Question not found." });
