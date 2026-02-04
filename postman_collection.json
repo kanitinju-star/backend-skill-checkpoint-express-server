@@ -1,0 +1,299 @@
+{
+    "info": {
+        "_postman_id": "b3e04c5d-6a12-4c6e-8e5a-1b2c3d4e5f6a",
+        "name": "Backend Skill Checkpoint",
+        "description": "Collection for testing the Q&A Platform API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Questions",
+            "item": [
+                {
+                    "name": "Create Question",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"What is Node.js?\",\n    \"description\": \"I want to understand what Node.js is used for.\",\n    \"category\": \"Programming\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:4000/questions",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Questions",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:4000/questions",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Search Questions",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:4000/questions/search?category=Programming",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "category",
+                                    "value": "Programming"
+                                },
+                                {
+                                    "key": "title",
+                                    "value": "Node",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Question by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:4000/questions/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Question",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"What is Node.js and Express?\",\n    \"description\": \"Updated description to include Express.\",\n    \"category\": \"Web Development\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:4000/questions/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Question",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:4000/questions/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Vote Question",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"vote\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:4000/questions/1/vote",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "1",
+                                "vote"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Answers",
+            "item": [
+                {
+                    "name": "Add Answer",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:4000/questions/2/answers",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "2",
+                                "answers"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Answers for Question",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:4000/questions/2/answers",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "2",
+                                "answers"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Vote Answer",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"vote\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:4000/answers/1/vote",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "answers",
+                                "1",
+                                "vote"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete All Answers for Question",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:4000/questions/2/answers",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "4000",
+                            "path": [
+                                "questions",
+                                "2",
+                                "answers"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
